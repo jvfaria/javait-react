@@ -4,27 +4,32 @@ import { ExperienceBar } from '../components/ExperienceBar';
 import { Profile } from '../components/Profile';
 import { ChallengeBox } from '../components/ChallengeBox';
 import styles from '../styles/pages/Home.module.css';
+import { CountdownProvider } from '../contexts/CountdownContext';
 
 
 import Head from 'next/head';
 
 export default function Home() {
   return (
+
     <div className={styles.container}>
       <Head><title>Home | Move It</title></Head>
       <ExperienceBar />
+      <CountdownProvider>
+        <section className={styles.section}>
+          <div>
+            <Profile />
+            <CompletedChallenges />
+            <Countdown />
+          </div>
 
-      <section className={styles.section}>
-        <div>
-          <Profile />
-          <CompletedChallenges />
-          <Countdown />
-        </div>
+          <div>
 
-        <div>
-          <ChallengeBox />
-        </div>
-      </section>
+            <ChallengeBox />
+
+          </div>
+        </section>
+      </CountdownProvider>
     </div>
 
   );
