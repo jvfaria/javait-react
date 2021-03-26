@@ -6,6 +6,11 @@ interface Challenge {
   type: 'body' | 'eye';
   description: string;
   amount: number;
+  code: string[];
+  choices: string[];
+  explanation: string;
+  answer: string;
+
 }
 
 interface ChallengesProviderProps {
@@ -38,7 +43,6 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
   useEffect(() => {
-    console.log('permission')
     Notification.requestPermission();
   }, []);
 
@@ -54,8 +58,7 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
     new Audio('/notification.mp3').play();
 
     new Notification('Novo desafio 🆕', {
-      body: `Valendo ${challenge.amount}xp`
-
+      body: `Worth ${challenge.amount}xp`
     });
   }
 
