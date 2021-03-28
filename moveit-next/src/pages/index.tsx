@@ -13,7 +13,13 @@ export default function Home() {
   return (
 
     <div className={styles.container}>
-      <Head><title>Home | Move It</title></Head>
+      <div>
+      <img src="/icons/javait-logo.png" alt=""/>
+      
+      <h1>“Questions open a space in your mind that allow better answers to breathe.”</h1>
+      </div>
+      
+      <Head><title>Home | Java It</title></Head>
       <ExperienceBar />
       <CountdownProvider>
         <section className={styles.section}>

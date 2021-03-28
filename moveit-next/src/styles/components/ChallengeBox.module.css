@@ -95,7 +95,7 @@
   background: var(--red);
 }
 .challengeActive footer > button:first-child:hover  {
-  background: #ba3249;
+  background: #bc2327;
   transition: 0.2s;
 }
 .challengeActive form {
@@ -140,7 +140,7 @@
   transition: 0.2s;
 }
 
-.modal {
+/* .modal {
   padding: 0;
   margin: 0;
   display: flex;
@@ -161,8 +161,8 @@
 .redeemButton:hover {
   transition: 0.4s;
   background: #28715a;
-}
-.modal > div:first-child {
+} */
+/* .modal > div:first-child {
   width: 100%;
   height: 190px;
   display: flex;
@@ -182,8 +182,8 @@
 .modal > div:first-child button:hover {
   transition: 0.3s;
   color: #b8b8b8;
-}
-.explanationContainer {
+} */
+/* .explanationContainer {
   width: 90%;
   height: 100%;
   padding: 20px;
@@ -213,9 +213,8 @@
 .explanationContainer hr {
   margin-top: 20px;
   width: 100%;
-  height: 1px;
-  background-color: #323232;
-  border: none;
+  background-color: #323232cc;
+  border: solid 1px;
 }
 .explanationDescription {
   display: inline;
@@ -241,7 +240,7 @@
   color: #328d71;
   font-style: italic;
   font-weight: 500;
-}
+} */
 /* 
 
 

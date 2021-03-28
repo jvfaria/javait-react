@@ -1,13 +1,13 @@
-import { FormHTMLAttributes, useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { ChallengesContext } from '../contexts/ChallengesContext';
 import { CountdownContext } from '../contexts/CountdownContext';
 import { useForm } from 'react-hook-form';
 
 import { FiCheckCircle } from 'react-icons/fi';
-import { IoIosClose } from 'react-icons/io';
 
-import Modal from 'react-modal';
+import { ModalCustom } from '../components/ModalCustom';
+
 import styles from '../styles/components/ChallengeBox.module.css';
 
 interface CheckboxProps {
@@ -19,32 +19,17 @@ export function ChallengeBox() {
   const {
     activeChallenge,
     resetChallenge,
-    completeChallenge
   } = useContext(ChallengesContext);
-
+  useEffect(() => {
+    setModalIsOpen(false);
+  }, [activeChallenge]);
 
   const { handleSubmit } = useForm();
-  const [modalIsOpen, setModalIsOpen] = useState(false)
   const [rightAnswer, setRightAnswer] = useState('')
+  const [success, setSuccess] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   const [explanation, setExplanation] = useState('')
   const [challengeAmount, setChallengeAmount] = useState(0)
-
-  const customStyleModal = {
-    content: {
-      width: '550px',
-      background: '#fff',
-      height: '700px',
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      borderColor: 'white',
-      padding: '0',
-      margin: '0',
-    }
-  }
 
 
 
@@ -62,20 +47,23 @@ export function ChallengeBox() {
 
     if (activeChallenge.answer === userAnswer) {
       setRightAnswer(textAnswer);
+      setSuccess(true);
       setExplanation(activeChallenge.explanation);
-      setChallengeAmount(activeChallenge.amount)
+      setChallengeAmount(activeChallenge.amount);
       setModalIsOpen(true);
-      // history.push('/')
+
       return;
     }
-    alert(`WRONG ANSWER`)
-    handleChallengeFailed()
+    setSuccess(false);
+    const letterAnswer = activeChallenge.answer;
+    const textRightAnswer = document.getElementById(`${letterAnswer}`).textContent.split(")")[1].trim();
+    setRightAnswer(letterAnswer+") " + textRightAnswer);
+    setExplanation(activeChallenge.explanation);
+    setModalIsOpen(true);
     return;
+
   }
-  function redeemXP() {
-    setModalIsOpen(false);
-    handleChallengeSucceded();
-  }
+
 
   const { resetCountdown } = useContext(CountdownContext);
   const choicesInitialValue: CheckboxProps[] = [
@@ -86,26 +74,11 @@ export function ChallengeBox() {
   ]
   const [checkbox, setCheckbox] = useState<Array<CheckboxProps>>(choicesInitialValue);
 
-
-  function closeModal() {
-    setModalIsOpen(false);
-  }
-  function handleChallengeSucceded() {
-    completeChallenge();
-    resetCountdown();
-  }
-  // function handleSubmit(e) {
-  //   e.preventDefault()
-  //   const form = optionForm.current
-
-  //   form.querySelector("input")
-
-  // }
-
   function handleChallengeFailed() {
     resetChallenge();
     resetCountdown();
   }
+
 
   function handleChecked(event) {
     const index = Number(event.target.id);
@@ -122,43 +95,18 @@ export function ChallengeBox() {
   }
   return (
     <div className={styles.challengeBoxContainer}>
-      <Modal
-        isOpen={modalIsOpen}
-        style={customStyleModal}
-        contentLabel={"Explanation modal: "}
-      >
-        <div className={styles.modal}>
+      {
+        modalIsOpen &&
 
-          <div>
-            <button id="close-button" onClick={closeModal}><IoIosClose size={35} /></button>
-            <FiCheckCircle size={120} style={{ color: '#fff' }} />
-          </div>
+        <ModalCustom
+          isOpen={modalIsOpen}
+          success={success}
+          challengeAmount={challengeAmount}
+          explanation={explanation}
+          rightAnswer={rightAnswer}
+        />
+      }
 
-          <div className={styles.explanationContainer}>
-            <h1>You got it !</h1>
-            <h3>Right answer:   <strong>{rightAnswer}</strong></h3>
-
-            <hr />
-            <div className={styles.explanationDescription}>
-              <h4>
-                Explanation:
-              </h4>
-              <div>
-                <p>{explanation}</p>
-              </div>
-            </div>
-          </div>
-
-
-          <button
-            onClick={redeemXP}
-            className={styles.redeemButton}>
-            Redeem {challengeAmount} XP
-          </button>
-
-        </div>
-
-      </Modal>
 
       { activeChallenge ? (
         <div className={styles.challengeActive}>
