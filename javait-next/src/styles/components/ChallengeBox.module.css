@@ -1,0 +1,255 @@
+.challengeBoxContainer {
+  height: 100%;
+
+  background: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+.challengeNotActive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.challengeNotActive strong {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+  width: 90%;
+}
+
+.challengeNotActive p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.4;
+  max-width: 80%;
+  margin-top: 3rem;
+}
+.challengeNotActive p img {
+  width: 2.3rem;
+  height: 2.3rem; 
+  margin-right: 15px;
+}
+
+.challengeActive {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.challengeActive header {
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 1.25rem;
+  padding: 0 2rem 1.5rem;
+  border-bottom: 1px solid var(--gray-line);
+}
+.challengeActive main {
+  flex: 1;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.challengeActive main strong {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--title);
+  margin: 1.rem 0 1rem;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.challengeActive footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.challengeActive footer button {
+  width: 10.8rem;
+  height: 3.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  border: 1px solid;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.challengeActive footer > button:first-child {
+  background: var(--red);
+}
+.challengeActive footer > button:first-child:hover  {
+  background: #bc2327;
+  transition: 0.2s;
+}
+.challengeActive form {
+  flex: 1;
+  width: 100%;
+}
+.challengeActive form > div {
+  flex: 1;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f2f3f5;
+
+}
+.challengeActive form > div div + div {
+  flex: 1;
+  margin-top: 20px;
+
+}
+.challengeActive form footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.choicesLabel {
+  display: flex;
+  position: relative;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.choicesLabel input {
+  position: absolute;
+  right: 0;
+  font-size: 50pt;
+
+}
+.challengeActive form footer > button:last-child {
+  background: var(--green);
+}
+.challengeActive form footer > button:last-child:hover {
+  background: #44c127;
+  transition: 0.2s;
+}
+
+/* .modal {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.redeemButton {
+  position: relative;
+  width: 180px;
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  outline: 0;
+  background: #328d71;
+  color: #fff;
+}
+.redeemButton:hover {
+  transition: 0.4s;
+  background: #28715a;
+} */
+/* .modal > div:first-child {
+  width: 100%;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #47c9a2cc;
+  margin-bottom: 30px;
+}
+.modal > div:first-child button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  color: #e6e6e6;
+}
+.modal > div:first-child button:hover {
+  transition: 0.3s;
+  color: #b8b8b8;
+} */
+/* .explanationContainer {
+  width: 90%;
+  height: 100%;
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.explanationContainer h1 {
+  color: #434e65;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+.explanationContainer h3 {
+  position: relative;
+  left: 0;
+  color: #323232;
+  font : 500 1.2rem 'Inter', sans-serif;
+}
+.explanationContainer strong {
+  font : 700 1rem 'Inter', sans-serif;
+  color: #2e384d;
+  background: rgba(0, 0, 0, 0.05);
+  margin-left: 12px;
+}
+.explanationContainer hr {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #323232cc;
+  border: solid 1px;
+}
+.explanationDescription {
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+.explanationDescription h4 {
+  position: relative;
+  left: 0%;
+  color: #323232;
+  font : 500 1.2rem 'Inter', sans-serif;
+}
+.explanationDescription > div {
+  width: 100%;
+  height: 150px;
+  background: rgba(0, 0, 0, 0.05);
+  margin-top: 10px;
+}
+.explanationDescription p {
+  padding: 20px;
+  font : 400 1rem 'Inter', sans-serif;
+  color: #328d71;
+  font-style: italic;
+  font-weight: 500;
+} */
+/* 
+
+
+
+
+
+
+
+.modal > div button:hover {
+  transition: 1s;
+  color: #a9aaac;
+} */

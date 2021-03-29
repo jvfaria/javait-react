@@ -12,7 +12,7 @@ public class CreateUserService {
     @Autowired
     UserRepository userRepository;
 
-    public ResponseEntity<User> create(User user) { 
+    public ResponseEntity<User> create(User user) {
         User u = new User();
         u.setName(user.getName());
         u.setEmail(user.getEmail());
